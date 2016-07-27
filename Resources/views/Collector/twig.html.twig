@@ -1,0 +1,29 @@
+{% extends '@WebProfiler/Profiler/layout.html.twig' %}
+
+{% block toolbar %}
+    {% set icon %}
+        {{ include('@WebProfiler/Icon/twig.svg') }}
+    {% endset %}
+
+    {% set text %}
+        <div class="sf-toolbar-info-piece">
+            <table class="sf-toolbar-ajax-requests">
+                <thead>
+                <tr>
+                    <th>Template</th>
+                </tr>
+                </thead>
+                <tbody class="sf-toolbar-ajax-request-list">
+                {% for template in collector.templates %}
+                    {%- set link = template.fullPath|file_link(0) %}
+                    <tr>
+                        <td><a href="{{ link }}">{{ template.template }}</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endset %}
+
+    {{ include('@WebProfiler/Profiler/toolbar_item.html.twig', { link: profiler_url }) }}
+{% endblock %}

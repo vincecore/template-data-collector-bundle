@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="vincecore.data_collector.twig_clickable" class="Vincecore\TemplateDataCollectorBundle\DataCollector\TwigDataCollector" public="false">
+            <tag name="data_collector" template="VincecoreTemplateDataCollectorBundle:Collector:twig.html.twig" id="twig_clickable" priority="256" />
+            <argument type="service" id="twig.profile" />
+            <argument type="service" id="twig.loader" />
+        </service>
+    </services>
+</container>
